@@ -1,18 +1,36 @@
 main:
   tenders_api_server: ${options['tenders_api_server']}
   tenders_api_version: "${options['tenders_api_version']}"
-  public_tenders_api_server: ${options['public_tenders_api_server']}
+  {% if 'public_tenders_api_server' in options and options['public_tenders_api_server']%}
+    public_tenders_api_server: ${options['public_tenders_api_server']}
+  {% end %}
   contracting_api_server: ${options['contracting_api_server']}
   contracting_api_version: "${options['contracting_api_version']}"
-  buffers_size: ${options['buffers_size']}
-  full_stack_sync_delay: ${options['full_stack_sync_delay']}
-  empty_stack_sync_delay: ${options['empty_stack_sync_delay']}
-  on_error_sleep_delay: ${options['on_error_sleep_delay']}
-  jobs_watcher_delay: ${options['jobs_watcher_delay']}
+  {% if 'buffers_size' in options and options['buffers_size']%}
+    buffers_size: ${options['buffers_size']}
+  {% end %}
+  {% if 'full_stack_sync_delay' in options and options['full_stack_sync_delay']%}
+    full_stack_sync_delay: ${options['full_stack_sync_delay']}
+  {% end %}
+  {% if 'empty_stack_sync_delay' in options and options['empty_stack_sync_delay']%}
+    empty_stack_sync_delay: ${options['empty_stack_sync_delay']}
+  {% end %}
+  {% if 'on_error_sleep_delay' in options and options['on_error_sleep_delay']%}
+    on_error_sleep_delay: ${options['on_error_sleep_delay']}
+  {% end %}
+  {% if 'jobs_watcher_delay' in options and options['jobs_watcher_delay']%}
+    jobs_watcher_delay: ${options['jobs_watcher_delay']}
+  {% end %}
   api_token: "${options['api_token']}"
-  cache_db_name: ${options['cache_db_name']}
-  cache_host: "${options['cache_host']}"
-  cache_port: "${options['cache_port']}"
+  {% if 'cache_db_name' in options and options['cache_db_name']%}
+    cache_db_name: ${options['cache_db_name']}
+  {% end %}
+  {% if 'cache_host' in options and options['cache_host']%}
+    cache_host: ${options['cache_host']}
+  {% end %}
+  {% if 'cache_port' in options and options['cache_port']%}
+    cache_port: ${options['cache_port']}
+  {% end %}
 
 version: 1
 
@@ -35,7 +53,7 @@ handlers:
     TENDERS_API_URL: ${options['tenders_api_server']}
 
 loggers:
-  openprocurement.contracting.api.databridge:
+  openprocurement.bridge.contracting.databridge:
     handlers: [console, journal]
     propagate: no
     level: DEBUG
