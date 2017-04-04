@@ -13,6 +13,7 @@ main:
   proxy_server: ${options['proxy_server']}
   proxy_token: ${options['proxy_token']}
   proxy_port: ${options['proxy_port']}
+  proxy_version: ${options['proxy_version']}
   doc_service_server: ${options['doc_service_server']}
   doc_service_port: ${options['doc_service_port']}
   doc_service_user: ${options['doc_service_user']}
