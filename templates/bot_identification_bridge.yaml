@@ -19,10 +19,6 @@ main:
   doc_service_port: ${options['doc_service_port']}
   doc_service_user: ${options['doc_service_user']}
   doc_service_password: ${options['doc_service_password']}
-  cache_db_name: ${options['cache_db_name']}
-  cache_host: ${options['cache_host']}
-  cache_port: ${options['cache_port']}
-  time_to_live: ${options['time_to_live']}
 
 version: 1
 
