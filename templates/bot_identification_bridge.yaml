@@ -39,14 +39,19 @@ handlers:
     SYSLOG_IDENTIFIER: BOT_IDENTIFICATION_BRIDGE
     TENDERS_API_VERSION: "${options['tenders_api_version']}"
     TENDERS_API_URL: ${options['tenders_api_server']}
+{% if 'statsd' in options and options['statsd'] %}\
+  statsd:
+    level: DEBUG
+    class: statsdhandler.StatsdHandler
+    config_path: "${options['handler_config']}"
+{% end %}
 
 loggers:
   openprocurement.bot.identification.databridge:
-    handlers: [console, journal]
+    handlers: [console, journal${',statsd' if 'statsd' in options and options['statsd'] else ''}]
     propagate: no
     level: DEBUG
 
   "":
-    handlers: [console, journal]
+    handlers: [console, journal${',statsd' if 'statsd' in options and options['statsd'] else ''}]
     level: DEBUG
-
